@@ -122,13 +122,11 @@ def do(signer, bucket_name):
         stream_name = os.environ.get("STREAM_NAME")
         # Create StreamAdminClient / StreamClient
         stream_admin_client = oci.streaming.StreamAdminClient(config={}, signer=signer)
-        stream_client = oci.streaming.StreamClient(config={}, signer=signer)
         streaming_summary = get_streaming_ocid(stream_admin_client, stream_name, compartment_id)
 
         streaming_ocid = streaming_summary[0]
         stream_service_endpoint = streaming_summary[1]
-        #stream_pool_id = streaming_summary[2]
-        #print(streaming_ocid,stream_service_endpoint,stream_pool_id)
+        stream_client = oci.streaming.StreamClient(config={}, signer=signer, service_endpoint=stream_service_endpoint)
 
         #Get object name
         all_objects = object_storage.list_objects(namespace, bucket_name).data
