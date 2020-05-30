@@ -6,7 +6,8 @@ entrypoint: /python/bin/fdk /function/func.py handler
 memory: 1024
 timeout: 120
 config:
-  BATCH_SIZE	100	
-  OCI_BUCKETNAME	xxx
-  OCI_COMPARTMENT	xxx
-  STREAM_NAME	xxx
+  BATCH_SIZE: "123"
+  OCI_BUCKETNAME: "temp"
+  OCI_COMPARTMENT: "my ocid"
+  STREAM_NAME: "test"
+
